@@ -9,7 +9,7 @@ export function Home() {
         <div className="hero z-10 sm:h-96 bg-[#2F4754] flex pl-8 sm:pl-32 pt-16 sm:pt-32 md:text-5xl text-white font-bold">
           Insert Text Here....
         </div>
-        <img className="w-full sm:w-auto sm:bg-[#2F4754]" src="/test_1.png" />
+        {/* <img className="w-full sm:w-auto sm:bg-[#2F4754]" src="/test_1.png" /> */}
       </div>
       <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-0 z-20 justify-evenly md:max-h-[350px] text-white px-4">
         <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
