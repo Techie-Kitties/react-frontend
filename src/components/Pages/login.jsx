@@ -18,26 +18,29 @@ export function Login() {
             style={{ transformStyle: "preserve-3d" }}
           >
             <div
-              className="absolute w-full h-full p-4 shadow-lg  flex flex-col justify-center space-y-4"
+              className="absolute w-full h-full p-4 flex flex-col justify-center space-y-4 "
               style={{ backfaceVisibility: "hidden" }}
             >
               <div className="text-xl font-semibold text-center">Register</div>
               <input
                 type="text"
                 placeholder="Username"
-                className="w-full border-b  py-2 focus:outline-none"
+                className="w-full border-b bg-transparent py-2 focus:outline-none"
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full border-b  py-2 focus:outline-none"
+                className="w-full border-b bg-transparent py-2 focus:outline-none"
               />
               <button className="w-full p-2 bg-black text-white rounded-lg">
                 Register
               </button>
-
+              <button className="w-full p-2 bg-white border border-gray-300 rounded-lg flex items-center justify-center space-x-2">
+                <img className="w-8 h-8" src="/google.svg" />
+                <span>Register with Google</span>
+              </button>
               <div className="text-sm text-center">
-                Already registered?
+                Already registered?{" "}
                 <button
                   onClick={() => setIsFlipped(true)}
                   className="text-blue-600 underline"
@@ -47,7 +50,7 @@ export function Login() {
               </div>
             </div>
             <div
-              className="absolute w-full h-full p-4 bg-white shadow-lg rounded-lg flex flex-col justify-center space-y-4"
+              className="absolute w-full h-full p-4 rounded-lg flex flex-col justify-center space-y-4"
               style={{
                 backfaceVisibility: "hidden",
                 transform: "rotateY(180deg)",
@@ -57,19 +60,22 @@ export function Login() {
               <input
                 type="text"
                 placeholder="Username"
-                className="w-full border-b border-gray-300 py-2 focus:outline-none"
+                className="w-full border-b py-2 focus:outline-none"
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full border-b border-gray-300 py-2 focus:outline-none"
+                className="w-full border-b py-2 focus:outline-none"
               />
               <button className="w-full p-2 bg-black text-white rounded-lg">
                 Login
               </button>
-
+              <button className="w-full p-2 bg-white border border-gray-300 rounded-lg flex items-center justify-center space-x-2">
+                <img className="w-8 h-8" src="/google.svg" />
+                <span>Login with Google</span>
+              </button>
               <div className="text-sm text-center">
-                Don't have an account?
+                Don't have an account?{" "}
                 <button
                   onClick={() => setIsFlipped(false)}
                   className="text-blue-600 underline"
