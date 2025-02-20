@@ -7,14 +7,14 @@ export function Nav() {
     <div className="nav absolute top-0 left-0 w-full z-50 text-white">
       <div className="bg-transparent  p-6 flex justify-between items-center">
         <a
-          href="/home"
+          href="/"
           className="text-2xl md:text-3xl flex flex-row text-center font-bold"
         >
           <img src="/logo.png" className="w-[64px]" />
           <div className="my-auto pl-8">Eternal Echoes</div>
         </a>
         <div className="hidden md:flex md:space-x-16 text-lg font-semibold">
-          <a href="/home" className="hover:text-gray-300">
+          <a href="/" className="hover:text-gray-300">
             Home
           </a>
           <a href="/about" className="hover:text-gray-300">
