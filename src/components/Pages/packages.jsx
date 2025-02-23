@@ -17,7 +17,7 @@ export function Packages() {
             </div>
           </div>
           <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-10 z-20 justify-evenly md:max-h-[500px] text-white px-4 ">
-            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px]">
+            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
               <img
                 className="rounded-t-xl pb-12"
                 src="/basic-img.png"
@@ -57,7 +57,7 @@ export function Packages() {
                 </svg>
               </div>
             </div>
-            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px]">
+            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
               <img
                 className="brightness-90 rounded-t-xl pb-12"
                 src="/standard-img.png"
@@ -97,7 +97,7 @@ export function Packages() {
                 </svg>
               </div>
             </div>
-            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px]">
+            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
               <img
                 className="brightness-90 rounded-t-xl pb-12"
                 src="/premiuim-img.png"
@@ -137,10 +137,10 @@ export function Packages() {
                 </svg>
               </div>
             </div>
-            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px]">
+            <div className="flex md:-mt-[-2vw] flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
               <img
-                className="brightness-75 rounded-t-xl pb-8"
-                src="/customize-img.png"
+                className="brightness-100 rounded-t-xl pb-8"
+                src="/custom_img.png"
               />
 
               <div className="text-center text-xl pb-8 font-bold">Customize Your Own</div>
