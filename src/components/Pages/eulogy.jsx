@@ -124,7 +124,13 @@ export function Eulogy() {
                 >
                   Save
                 </button>
-                <button className="p-3  w-32 bg-orange-500 text-white font-bold rounded-xl">
+                <button
+                  className="p-3  w-32 bg-orange-500 text-white font-bold rounded-xl"
+                  onClick={(e) => {
+                    setIsEditing((prev) => !prev);
+                    e.stopPropagation();
+                  }}
+                >
                   Cancel
                 </button>
               </div>
