@@ -9,6 +9,7 @@ import React from "react";
 import { Home } from "./components/Pages/home";
 import { About } from "./components/Pages/about";
 import { Eulogy } from "./components/Pages/eulogy";
+import { NotFound } from "./components/Pages/notfound";
 export default function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/eulogy" element={<Eulogy />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
