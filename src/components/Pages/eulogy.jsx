@@ -79,6 +79,7 @@ export function Eulogy() {
             onClick={() => setModalOpen((prev) => !prev)}
           >
             <div
+              id="saveable"
               className="bg-[#CCCCCC]  opacity-100 flex w-[90vw] max-w-screen lg:w-[80vw] h-[90vh] lg:h-[80vh] rounded-t-lg overflow-hidden flex-col lg:flex-row relative"
               onClick={(e) => e.stopPropagation()}
             >
@@ -89,7 +90,7 @@ export function Eulogy() {
                 x
               </button>
               <div className="mx-auto lg:pt-6 h-full max-w-screen flex flex-col ">
-                <div className="lg:px-64  whitespace-pre-line overflow-y-scroll max-h-[90vh] w-[90vw] flex flex-col flex-1">
+                <div className="lg:px-64  whitespace-pre-line overflow-y-scroll  flex flex-col flex-1">
                   <img src="/logo.png" className="w-16 h-16 mx-auto" />
                   <div className="font-semibold text-center pb-2">
                     In Loving Memory of
@@ -112,7 +113,7 @@ export function Eulogy() {
               </div>
             </div>
             {isEditing ? (
-              <div className="flex justify-center md:space-x-12 space-x-2 bg-[#CCCCCC] w-[90vw] lg:w-[80vw] text-center py-4">
+              <div className="flex justify-center md:space-x-12 space-x-2 bg-[#CCCCCC] w-[90vw] border-t border-orange-500 rounded-b-lg lg:w-[80vw] text-center py-4">
                 <button
                   onClick={(e) => {
                     setIsEditing((prev) => !prev);
@@ -128,7 +129,7 @@ export function Eulogy() {
                 </button>
               </div>
             ) : (
-              <div className="flex justify-center md:space-x-12 space-x-2 bg-[#CCCCCC] w-[90vw] lg:w-[80vw] text-center py-4">
+              <div className="flex justify-center md:space-x-12 space-x-2 bg-[#CCCCCC] border-t border-orange-500 rounded-b-lg w-[90vw] lg:w-[80vw] text-center py-4">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -163,7 +164,7 @@ export function Eulogy() {
             onSubmit={handleSubmit}
             className="flex flex-col lg:space-y-4 space-y-3 w-[90%] lg:w-full mx-auto"
           >
-            <div className="font-semibold text-md border-b text-center md:text-left">
+            <div className="font-semibold text-md border-b  text-center md:text-left">
               Personal Information of the Deceased
             </div>
             <div className="font-semibold">Name</div>
