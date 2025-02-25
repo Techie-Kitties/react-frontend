@@ -1,3 +1,5 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import { Nav } from "./components/Widgets/nav";
 import { Login } from "./components/Pages/login";
