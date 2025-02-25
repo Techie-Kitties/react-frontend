@@ -9,12 +9,12 @@ export function Home() {
         <div className="hero z-10 sm:h-96 bg-[#2F4754] flex pl-8 sm:pl-32 pt-16 sm:pt-32 md:text-5xl text-white font-bold">
           Insert Text Here....
         </div>
-        {/* <img className="w-full sm:w-auto sm:bg-[#2F4754]" src="/test_1.png" /> */}
+        <img src="/hero-img.png" style={{ position: "absolute", right: 0, top: "70px", width: "45%" }} />
       </div>
       <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-0 z-20 justify-evenly md:max-h-[350px] text-white px-4">
         <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
           <img
-            className="brightness-50 rounded-t-xl pb-12"
+            className="brightness-80 rounded-t-xl pb-12"
             src="/package1.png"
           />
           <div className="text-center pb-8">Funeral packages</div>
@@ -54,8 +54,8 @@ export function Home() {
         </div>
         <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
           <img
-            className="brightness-50 rounded-t-xl pb-12"
-            src="/package1.png"
+            className="brightness-80 rounded-t-xl pb-12"
+            src="/graveyardCard.jpg"
           />
           <div className="text-center pb-8">Virtual Gravesite Tours</div>
           <div className="pb-7">
@@ -94,8 +94,8 @@ export function Home() {
         </div>
         <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
           <img
-            className="brightness-50 rounded-t-xl pb-12"
-            src="/package1.png"
+            className="brightness-80 rounded-t-xl pb-12"
+            src="/eulogyCard.avif"
           />
           <div className="text-center md:pb-8">Ai Generated Eulogy</div>
           <div className="pb-7">
