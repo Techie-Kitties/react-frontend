@@ -2,6 +2,8 @@ import { useState } from "react";
 
 export function Login() {
   const [isFlipped, setIsFlipped] = useState(false);
+  const local = localStorage.getItem("accounts.google.com");
+  console.log(local);
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
@@ -35,10 +37,13 @@ export function Login() {
               <button className="w-full p-2 bg-black text-white rounded-lg">
                 Register
               </button>
-              <button className="w-full p-2 bg-white border border-gray-300 rounded-lg flex items-center justify-center space-x-2">
+              <a
+                href="http://localhost:8080/login_google"
+                className="w-full p-2 bg-white border border-gray-300 rounded-lg flex items-center justify-center space-x-2"
+              >
                 <img className="w-8 h-8" src="/google.svg" />
-                <span>Register with Google</span>
-              </button>
+                <span>Login with Google</span>
+              </a>
               <div className="text-sm text-center">
                 Already registered?{" "}
                 <button
@@ -70,10 +75,13 @@ export function Login() {
               <button className="w-full p-2 bg-black text-white rounded-lg">
                 Login
               </button>
-              <button className="w-full p-2 bg-white border border-gray-300 rounded-lg flex items-center justify-center space-x-2">
+              <a
+                href="http://localhost:8080/login_google"
+                className="w-full p-2 bg-white border border-gray-300 rounded-lg flex items-center justify-center space-x-2"
+              >
                 <img className="w-8 h-8" src="/google.svg" />
                 <span>Login with Google</span>
-              </button>
+              </a>
               <div className="text-sm text-center">
                 Don't have an account?{" "}
                 <button
