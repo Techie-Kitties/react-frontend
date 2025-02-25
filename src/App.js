@@ -1,12 +1,3 @@
-import { Nav } from "./components/Widgets/nav";
-import { Login } from "./components/Pages/login";
-import { Example } from "./components/ReactStarter/example";
-import { createRoot } from "react-dom/client";
-
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Tour } from "./components/ThreeJS/tour";
-
 import React from "react";
 import { Nav } from "./components/Widgets/nav";
 import { Login } from "./components/Pages/login";
