@@ -96,16 +96,19 @@ export function Home() {
             className="brightness-80 rounded-t-xl pb-12"
             src="/eulogyCard.avif"
           />
-          <div className="text-center pb-8">AI Generated Eulogy</div>
-          <div className="pb-7">
-            <svg
-              className="mx-auto"
-              width="38"
-              height="37"
-              viewBox="0 0 38 37"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+
+          <div className="text-center md:pb-8">AI Generated Eulogy</div>
+          <a href="/eulogy">
+            <div className="pb-7">
+              <svg
+                className="mx-auto"
+                width="38"
+                height="37"
+                viewBox="0 0 38 37"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+
               <path
                 d="M37.5 18.5C37.5 28.4516 29.612 36.5 19.9048 36.5C10.1976 36.5 2.30957 28.4516 2.30957 18.5C2.30957 8.54839 10.1976 0.5 19.9048 0.5C29.612 0.5 37.5 8.54839 37.5 18.5Z"
                 fill="#DD6E42"
@@ -120,16 +123,18 @@ export function Home() {
                   stroke="black"
                   stroke-opacity="0.3"
                 />
-                <path
-                  d="M7.91675 18.0132H30.0834M30.0834 18.0132L19.0001 7.50549M30.0834 18.0132L19.0001 28.5208"
-                  stroke="#F3F3F3"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-            </svg>
-          </div>
+
+                  <path
+                    d="M7.91675 18.0132H30.0834M30.0834 18.0132L19.0001 7.50549M30.0834 18.0132L19.0001 28.5208"
+                    stroke="#F3F3F3"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+              </svg>
+            </div>
+          </a>
         </div>
       </div>
       <div className="bg-[#161E22] flex-1"></div>
