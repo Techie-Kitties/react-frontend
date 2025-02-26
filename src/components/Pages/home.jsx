@@ -11,10 +11,10 @@ export function Home() {
         </div>
         <img src="/hero-img.png" style={{ position: "absolute", right: 0, top: "70px", width: "45%" }} />
       </div>
-      <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-0 z-20 justify-evenly md:max-h-[350px] text-white px-4">
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
+      <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-10 z-20 justify-evenly md:max-h-[350px] text-white px-4 ">
+        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
           <img
-            className="brightness-80 rounded-t-xl pb-12"
+            className="brightness-80 rounded-t-xl pb-12 "
             src="/package1.png"
           />
           <div className="text-center pb-8">Funeral packages</div>
@@ -52,7 +52,7 @@ export function Home() {
             </svg>
           </div>
         </div>
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
+        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
           <img
             className="brightness-80 rounded-t-xl pb-12"
             src="/graveyardCard.jpg"
@@ -92,12 +92,11 @@ export function Home() {
             </svg>
           </div>
         </div>
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
-          <img
+<div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">          <img
             className="brightness-80 rounded-t-xl pb-12"
             src="/eulogyCard.avif"
           />
-          <div className="text-center md:pb-8">Ai Generated Eulogy</div>
+          <div className="text-center pb-8">AI Generated Eulogy</div>
           <div className="pb-7">
             <svg
               className="mx-auto"
