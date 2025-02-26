@@ -11,10 +11,10 @@ export function Home() {
         </div>
         <img src="/hero-img.png" style={{ position: "absolute", right: 0, top: "70px", width: "45%" }} />
       </div>
-      <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-0 z-20 justify-evenly md:max-h-[350px] text-white px-4">
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
+      <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-10 z-20 justify-evenly md:max-h-[350px] text-white px-4 ">
+        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
           <img
-            className="brightness-80 rounded-t-xl pb-12"
+            className="brightness-80 rounded-t-xl pb-12 "
             src="/package1.png"
           />
           <div className="text-center pb-8">Funeral packages</div>
@@ -52,7 +52,7 @@ export function Home() {
             </svg>
           </div>
         </div>
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
+        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">
           <img
             className="brightness-80 rounded-t-xl pb-12"
             src="/graveyardCard.jpg"
@@ -92,11 +92,11 @@ export function Home() {
             </svg>
           </div>
         </div>
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
-          <img
+<div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw] max-h-[360px] transform transition-transform duration-300 hover:scale-110">          <img
             className="brightness-80 rounded-t-xl pb-12"
             src="/eulogyCard.avif"
           />
+
           <div className="text-center md:pb-8">AI Generated Eulogy</div>
           <a href="/eulogy">
             <div className="pb-7">
@@ -108,20 +108,22 @@ export function Home() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M37.5 18.5C37.5 28.4516 29.612 36.5 19.9048 36.5C10.1976 36.5 2.30957 28.4516 2.30957 18.5C2.30957 8.54839 10.1976 0.5 19.9048 0.5C29.612 0.5 37.5 8.54839 37.5 18.5Z"
-                  fill="#DD6E42"
-                  stroke="#DD6E42"
+
+              <path
+                d="M37.5 18.5C37.5 28.4516 29.612 36.5 19.9048 36.5C10.1976 36.5 2.30957 28.4516 2.30957 18.5C2.30957 8.54839 10.1976 0.5 19.9048 0.5C29.612 0.5 37.5 8.54839 37.5 18.5Z"
+                fill="#DD6E42"
+                stroke="#DD6E42"
+              />
+              <g opacity="0.7">
+                <rect
+                  x="0.5"
+                  y="0.5"
+                  width="37"
+                  height="35.0263"
+                  stroke="black"
+                  stroke-opacity="0.3"
                 />
-                <g opacity="0.7">
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="37"
-                    height="35.0263"
-                    stroke="black"
-                    stroke-opacity="0.3"
-                  />
+
                   <path
                     d="M7.91675 18.0132H30.0834M30.0834 18.0132L19.0001 7.50549M30.0834 18.0132L19.0001 28.5208"
                     stroke="#F3F3F3"
