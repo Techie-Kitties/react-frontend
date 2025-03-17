@@ -10,6 +10,7 @@ import { Eulogy } from "./components/Pages/eulogy";
 import { NotFound } from "./components/Pages/notfound";
 import { OAuthSuccess } from "./components/Widgets/oauthSuccess";
 import { Packages } from "./components/Pages/packages";
+import { PackageDetails } from "./components/Pages/package-details";
 //import { Tour } from "./components/ThreeJS/tour";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/eulogy" element={<Eulogy />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/packages" element={<Packages />} />
+        <Route path="/package-details" element={<PackageDetails />} />
       </Routes>
     </BrowserRouter>
   );
