@@ -158,7 +158,7 @@ export function Eulogy() {
             )}
           </div>
         )}
-        <div className="bg-[#D9D9D9] xl:w-1/3 lg:w-2/3 lg:p-8 lg:mt-[10vh] mt-[15vh] py-4  w-[90vw] rounded-xl shadow-lg flex  flex-col">
+        <div className="bg-[#D9D9D9] xl:w-1/3 lg:w-2/3 lg:p-8 lg:mt-[10vh] mt-[15vh] py-4  w-[90vw] rounded-xl shadow-lg flex overflow-y-scr flex-col">
           <div className="lg:text-xl text-lg font-bold text-center">
             AI Eulogy Form
           </div>
@@ -226,6 +226,27 @@ export function Eulogy() {
               onChange={handleChange}
               className="p-2  rounded w-full bg-[#CCCCCC] resize-none"
             />
+            <div className="font-semibold">Career</div>
+            <textarea
+              name="occupation"
+              placeholder="Relationships (Spouse, Children, Grandchildren, etc.)"
+              onChange={handleChange}
+              className="p-2  rounded w-full bg-[#CCCCCC] resize-none"
+            />
+            <div className="font-semibold">Hobbies</div>
+            <textarea
+              name="hobbies"
+              placeholder="Relationships (Spouse, Children, Grandchildren, etc.)"
+              onChange={handleChange}
+              className="p-2  rounded w-full bg-[#CCCCCC] resize-none"
+            />
+            <div className="font-semibold">Anecdotes</div>
+            <textarea
+              name="anecdotes"
+              placeholder="Relationships (Spouse, Children, Grandchildren, etc.)"
+              onChange={handleChange}
+              className="p-2  rounded w-full bg-[#CCCCCC] resize-none"
+            />
             {loading ? (
               <button
                 type="submit"
@@ -239,7 +260,7 @@ export function Eulogy() {
                   viewBox="0 0 24 24"
                 >
                   <circle
-                    class="opacity-25"
+                    className="opacity-25"
                     cx="12"
                     cy="12"
                     r="10"
@@ -247,7 +268,7 @@ export function Eulogy() {
                     stroke-width="4"
                   ></circle>
                   <path
-                    class="opacity-75"
+                    className="opacity-75"
                     fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
