@@ -10,7 +10,9 @@ import { Eulogy } from "./components/Pages/eulogy";
 import { NotFound } from "./components/Pages/notfound";
 import { OAuthSuccess } from "./components/Widgets/oauthSuccess";
 import { Packages } from "./components/Pages/packages";
-//import { Tour } from "./components/ThreeJS/tour";
+import { PackageDetails } from "./components/Pages/package-details";
+import { Admin } from "./components/Pages/admin";
+import { Tour } from "./components/ThreeJS/tour";
 
 export default function App() {
   return (
@@ -22,6 +24,9 @@ export default function App() {
         <Route path="/eulogy" element={<Eulogy />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/packages" element={<Packages />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/package-details" element={<PackageDetails />} />
+        <Route path="/tour" element={<Tour />} />
       </Routes>
     </BrowserRouter>
   );
