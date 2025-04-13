@@ -24,9 +24,11 @@ export default function App() {
         <Route path="/eulogy" element={<Eulogy />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/packages" element={<Packages />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/package-details" element={<PackageDetails />} />
         <Route path="/tour" element={<Tour />} />
+        <Route path="/" element={<Tour />} />
+        <Route path="/auth" element={<OAuthSuccess />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
