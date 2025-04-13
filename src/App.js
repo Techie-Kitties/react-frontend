@@ -13,7 +13,6 @@ import { Packages } from "./components/Pages/packages";
 import { PackageDetails } from "./components/Pages/package-details";
 import { Admin } from "./components/Pages/admin";
 import { Tour } from "./components/ThreeJS/tour";
-import { CheckIdentityButton } from "./components/Pages/check";
 
 export default function App() {
   return (
@@ -28,10 +27,8 @@ export default function App() {
         <Route path="/package-details" element={<PackageDetails />} />
         <Route path="/tour" element={<Tour />} />
         <Route path="/" element={<Tour />} />
-
         <Route path="/auth" element={<OAuthSuccess />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="check" element={<CheckIdentityButton />}></Route>
       </Routes>
     </BrowserRouter>
   );
