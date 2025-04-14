@@ -1,141 +1,86 @@
-import { Footer } from "../Widgets/footer";
+import { useEffect } from "react";
 import { Nav } from "../Widgets/nav";
+import { useAuth } from "../Context/authhandler";
+
 
 export function Home() {
+  const { isLoggedIn } = useAuth();
+
+
+  const packagesLink = isLoggedIn ? "/packages" : "/login";
+  const tourLink = isLoggedIn ? "/tour" : "/login";
+  const eulogyLink = isLoggedIn ? "/eulogy" : "/login";
+
+
   return (
-    <div className="min-h-screen z-10 flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <Nav />
-      <div className="flex flex-col sm:flex-row bg-[#2F4754] max-w-screen overflow-x-hidden">
-        <div className="hero z-10 sm:h-96 bg-[#2F4754] flex pl-8 sm:pl-32 pt-16 sm:pt-32 md:text-5xl text-white font-bold">
-          Insert Text Here....
+      <div className="flex flex-col bg-[#2F4754] relative overflow-hidden">
+        <div className="flex flex-col px-4 py-20 md:py-32 z-10">
+          <h1 className="text-3xl md:text-5xl pl-8 pt-16 text-white font-bold max-w-md">
+            Cherishing your loved ones
+          </h1>
         </div>
-        <img src="/hero-img.png" style={{ position: "absolute", right: 0, top: "70px", width: "45%" }} />
+        <div className="flex justify-end">
+          <img
+            src="/hero-img.png"
+            className="absolute right-0 top-0 md:top-[70px] max-w-[80%] md:max-w-[50%] opacity-70 hidden md:flex md:opacity-100"
+          />
+        </div>
       </div>
-      <div className="bg-[#161E22] md:flex space-y-12 flex-1 md:space-y-0 z-20 justify-evenly md:max-h-[350px] text-white px-4">
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
-          <img
-            className="brightness-80 rounded-t-xl pb-12"
-            src="/package1.png"
-          />
-          <div className="text-center pb-8">Funeral packages</div>
-          <div className="pb-7">
-            <svg
-              className="mx-auto"
-              width="38"
-              height="37"
-              viewBox="0 0 38 37"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M37.5 18.5C37.5 28.4516 29.612 36.5 19.9048 36.5C10.1976 36.5 2.30957 28.4516 2.30957 18.5C2.30957 8.54839 10.1976 0.5 19.9048 0.5C29.612 0.5 37.5 8.54839 37.5 18.5Z"
-                fill="#DD6E42"
-                stroke="#DD6E42"
-              />
-              <g opacity="0.7">
-                <rect
-                  x="0.5"
-                  y="0.5"
-                  width="37"
-                  height="35.0263"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                />
-                <path
-                  d="M7.91675 18.0132H30.0834M30.0834 18.0132L19.0001 7.50549M30.0834 18.0132L19.0001 28.5208"
-                  stroke="#F3F3F3"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
-          <img
-            className="brightness-80 rounded-t-xl pb-12"
-            src="/graveyardCard.jpg"
-          />
-          <div className="text-center pb-8">Virtual Gravesite Tours</div>
-          <div className="pb-7">
-            <svg
-              className="mx-auto"
-              width="38"
-              height="37"
-              viewBox="0 0 38 37"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M37.5 18.5C37.5 28.4516 29.612 36.5 19.9048 36.5C10.1976 36.5 2.30957 28.4516 2.30957 18.5C2.30957 8.54839 10.1976 0.5 19.9048 0.5C29.612 0.5 37.5 8.54839 37.5 18.5Z"
-                fill="#DD6E42"
-                stroke="#DD6E42"
-              />
-              <g opacity="0.7">
-                <rect
-                  x="0.5"
-                  y="0.5"
-                  width="37"
-                  height="35.0263"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                />
-                <path
-                  d="M7.91675 18.0132H30.0834M30.0834 18.0132L19.0001 7.50549M30.0834 18.0132L19.0001 28.5208"
-                  stroke="#F3F3F3"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-        <div className="flex md:-mt-12 flex-col shadow-xl shadow-black rounded-xl w-full sm:w-[20vw]">
-          <img
-            className="brightness-80 rounded-t-xl pb-12"
-            src="/eulogyCard.avif"
-          />
-          <div className="text-center md:pb-8">AI Generated Eulogy</div>
-          <a href="/eulogy">
-            <div className="pb-7">
-              <svg
-                className="mx-auto"
-                width="38"
-                height="37"
-                viewBox="0 0 38 37"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M37.5 18.5C37.5 28.4516 29.612 36.5 19.9048 36.5C10.1976 36.5 2.30957 28.4516 2.30957 18.5C2.30957 8.54839 10.1976 0.5 19.9048 0.5C29.612 0.5 37.5 8.54839 37.5 18.5Z"
-                  fill="#DD6E42"
-                  stroke="#DD6E42"
-                />
-                <g opacity="0.7">
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="37"
-                    height="35.0263"
-                    stroke="black"
-                    stroke-opacity="0.3"
-                  />
-                  <path
-                    d="M7.91675 18.0132H30.0834M30.0834 18.0132L19.0001 7.50549M30.0834 18.0132L19.0001 28.5208"
-                    stroke="#F3F3F3"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-              </svg>
+      <div className="flex flex-col bg-[#161E22] z-20 px-4 py-10">
+        <div className="flex flex-col md:flex-row justify-evenly items-center">
+          <div className="flex flex-col w-full md:w-1/3 max-w-xs shadow-xl shadow-black rounded-xl md:-mt-12 transform transition-transform duration-300 hover:scale-105 mb-8 md:mb-0">
+            <img
+              className="brightness-80 rounded-t-xl w-full object-cover h-48"
+              src="/package1.png"
+              alt="Funeral packages"
+            />
+            <div className="flex flex-col p-4 text-white">
+              <div className="text-center pb-3">Funeral packages</div>
+              <a href={packagesLink} className="flex justify-center">
+                <img className="mx-auto" src="/arrow.svg" alt="View packages" />
+              </a>
             </div>
-          </a>
+          </div>
+          <div className="flex flex-col w-full md:w-1/3 max-w-xs shadow-xl shadow-black rounded-xl md:-mt-12 transform transition-transform duration-300 hover:scale-105 mb-8 md:mb-0">
+            <img
+              className="brightness-80 rounded-t-xl w-full object-cover h-48"
+              src="/graveyardCard.jpg"
+              alt="Virtual Gravesite Tours"
+            />
+            <div className="flex flex-col p-4 text-white">
+              <div className="text-center pb-3">Virtual Gravesite Tours</div>
+              <a href={tourLink} className="flex justify-center">
+                <img className="mx-auto" src="/arrow.svg" alt="Go to tour" />
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col w-full md:w-1/3 max-w-xs shadow-xl shadow-black rounded-xl md:-mt-12 transform transition-transform duration-300 hover:scale-105">
+            <img
+              className="brightness-80 rounded-t-xl w-full object-cover h-48"
+              src="/eulogyCard.avif"
+              alt="AI Generated Eulogy"
+            />
+            <div className="flex flex-col p-4 text-white">
+              <div className="text-center pb-3">AI Generated Eulogy</div>
+              <a href={eulogyLink} className="flex justify-center">
+                <img
+                  className="mx-auto"
+                  src="/arrow.svg"
+                  alt="Generate eulogy"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="bg-[#161E22] flex-1"></div>
+      <div className="flex-1 bg-[#161E22]"></div>
     </div>
   );
 }
+
+
+
+
+
