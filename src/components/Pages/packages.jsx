@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Footer } from "../Widgets/footer";
 import { Nav } from "../Widgets/nav";
 import { PackageDetails } from "./package-details";
-
-
+import { useAuth } from "../Context/authhandler";
 export function Packages() {
+  const { isLoggedIn } = useAuth();
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -46,12 +46,26 @@ export function Packages() {
   };
 
 
+
+  const handlePurchase = () => {
+    if (isLoggedIn) {
+      alert("Package successfully purchased"); // mock purchase
+      closeModal();
+      return;
+    }
+    window.location.href = "/login";
+  };
+
+
+
   const Modal = ({ isOpen, onClose, package: pkg }) => {
     if (!isOpen || !pkg) return null;
 
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
+
+      <div className="fixed inset-0 bg-gradient-to-b from-slate-800 to-black bg-opacity-50 z-50 flex justify-center items-center p-4">
+
         <div className="bg-white rounded-lg p-6 sm:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
           <button
             onClick={onClose}
@@ -153,8 +167,14 @@ export function Packages() {
           </div>
 
 
-          <div className="text-3xl sm:text-4xl font-bold text-[#DD6E42] mt-6 sm:mt-8 text-center sm:text-left">
+          <div className="text-3xl sm:text-4xl flex justify-between font-bold text-[#DD6E42] mt-6 sm:mt-8 text-center sm:text-left">
             ${pkg.price.toLocaleString()}
+            <button
+              className="bg-[#DD6E42] text-black rounded-xl text-xl p-3"
+              onClick={handlePurchase}
+            >
+              Purchase
+            </button>
           </div>
         </div>
       </div>
@@ -164,7 +184,6 @@ export function Packages() {
 
   return (
     <div className="min-h-screen z-10 relative flex flex-col">
-      <PackageDetails />
       <Nav />
       <div className="flex flex-col sm:flex-row bg-[#2F4754] max-w-screen overflow-x-hidden">
         <div className="hero z-10 sm:h-80 bg-[#2F4754] flex pl-8 sm:pl-32 pt-16 sm:pt-32 md:text-5xl text-white font-bold">
@@ -251,8 +270,3 @@ export function Packages() {
     </div>
   );
 }
-
-
-
-
-

@@ -1,28 +1,13 @@
 import { useEffect, useState } from "react";
-
+import { useAuth } from "../Context/authhandler";
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({});
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  useEffect(() => {
-    const storedUserData = localStorage.getItem("userData");
-
-    if (storedUserData !== null && storedUserData !== "null") {
-      const parsedData = JSON.parse(storedUserData);
-      setUserData(parsedData);
-      console.log(storedUserData);
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, []);
+  const { isLoggedIn, user, logout } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem("userData");
-    setIsLoggedIn(false);
-    setUserData({});
+    console.log(user);
+    logout();
     setDropdownOpen(false);
   };
 
@@ -33,9 +18,10 @@ export function Nav() {
           href="/"
           className="text-2xl md:text-3xl flex flex-row text-center font-bold"
         >
-          <img src="/logo.png" className="w-[64px]" />
+          <img src="/logo.png" className="w-[64px]" alt="Logo" />
           <div className="my-auto pl-8">Eternal Echoes</div>
         </a>
+
         <div className="hidden md:flex md:space-x-16 text-lg font-semibold">
           <a href="/" className="hover:text-gray-300">
             Home
@@ -46,18 +32,31 @@ export function Nav() {
           <a href="/contact" className="hover:text-gray-300">
             Contact
           </a>
+
+          {user?.role == 1 ||
+            (user?.role == 0 && (
+              <a href="/admin" className="hover:text-gray-300">
+                Admin
+              </a>
+            ))}
+
           {isLoggedIn ? (
             <div className="relative">
               <div
                 className="flex items-center space-x-4 cursor-pointer"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <img
-                  src={userData.picture}
-                  alt="Profile"
-                  className="w-10 h-10 rounded-full"
-                />
-                <span>{userData.given_name}</span>
+                {user?.picture ? (
+                  <img
+                    src={user.picture}
+                    referrerPolicy="no-referrer"
+                    alt="Profile"
+                    className="w-10 h-10 rounded-full"
+                  />
+                ) : (
+                  <div className="w-10 h-10 bg-gray-400 rounded-full" />
+                )}
+                <span>{user?.name || user?.username || "User"}</span>
               </div>
 
               {dropdownOpen && (
@@ -66,7 +65,7 @@ export function Nav() {
                     <li>
                       <button
                         onClick={handleLogout}
-                        className="block px-4 py-2 text-left hover:bg-gray-600"
+                        className="block w-full px-4 py-2 text-left hover:bg-gray-600"
                       >
                         Logout
                       </button>
@@ -81,9 +80,11 @@ export function Nav() {
             </a>
           )}
         </div>
+
         <button
           className="md:hidden focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
           {isOpen ? (
             <svg
@@ -117,6 +118,7 @@ export function Nav() {
           )}
         </button>
       </div>
+
       <div
         className={`absolute top-[64px] left-0 w-full bg-[#2F4754] text-lg font-semibold 
           transform transition-all duration-300 ease-in-out origin-top 
@@ -127,31 +129,56 @@ export function Nav() {
           }`}
       >
         <div className="flex flex-col space-y-4 p-6">
-          <a href="/home" className="hover:text-gray-300">
+          <a
+            href="/"
+            className="hover:text-gray-300"
+            onClick={() => setIsOpen(false)}
+          >
             Home
           </a>
-          <a href="/about" className="hover:text-gray-300">
+          <a
+            href="/about"
+            className="hover:text-gray-300"
+            onClick={() => setIsOpen(false)}
+          >
             About
           </a>
-          <a href="/contact" className="hover:text-gray-300">
+          <a
+            href="/contact"
+            className="hover:text-gray-300"
+            onClick={() => setIsOpen(false)}
+          >
             Contact
           </a>
+
+          {user?.role == 1 ||
+            (user?.role == 3 && (
+              <a
+                href="/admin"
+                className="hover:text-gray-300"
+                onClick={() => setIsOpen(false)}
+              >
+                Admin
+              </a>
+            ))}
+
           {isLoggedIn ? (
             <div className="relative">
               <div
                 className="flex items-center space-x-4 cursor-pointer"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                {userData.picture ? (
+                {user?.picture ? (
                   <img
-                    src={userData.picture}
+                    src={user.picture}
+                    referrerPolicy="no-referrer"
                     alt="Profile"
                     className="w-10 h-10 rounded-full"
                   />
                 ) : (
-                  <div className="w-10 h-10 bg-gray-400 rounded-full" /> // Placeholder if no picture
+                  <div className="w-10 h-10 bg-gray-400 rounded-full" />
                 )}
-                <span>{userData.given_name}</span>
+                <span>{user?.name || user?.username || "User"}</span>
               </div>
 
               {dropdownOpen && (
@@ -160,7 +187,7 @@ export function Nav() {
                     <li>
                       <button
                         onClick={handleLogout}
-                        className="block px-4 py-2 text-left hover:bg-gray-600"
+                        className="block w-full px-4 py-2 text-left hover:bg-gray-600"
                       >
                         Logout
                       </button>
@@ -170,7 +197,11 @@ export function Nav() {
               )}
             </div>
           ) : (
-            <a href="/login" className="hover:text-gray-300">
+            <a
+              href="/login"
+              className="hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
+            >
               Login
             </a>
           )}
