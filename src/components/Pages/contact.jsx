@@ -27,7 +27,8 @@ export function Contact() {
             <img
               src={`${process.env.PUBLIC_URL}/Phone.svg`}
               alt="Mail Icon"
-              className="rounded-full border p-6 -mt-6 bg-orange-500 border-black"/>
+              className="rounded-full border p-6 -mt-6 bg-orange-500 border-black"
+            />
             <div className="">
               <div className="">Phone/Landline</div>
               <div className=""> +1868 --- ---- </div>
@@ -48,6 +49,6 @@ export function Contact() {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>
+  );
 }

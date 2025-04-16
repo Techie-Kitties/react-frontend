@@ -49,6 +49,29 @@ export function AuthProvider({ children }) {
     initializeAuth();
   }, []);
 
+  useEffect(() => {
+    const fetchRole = async () => {
+      if (!user || user.role !== undefined) return;
+
+      try {
+        const response = await axios.get("http://localhost:8080/identity", {
+          withCredentials: true,
+        });
+
+        const { role } = response.data;
+
+        const updatedUser = { ...user, role };
+
+        setUser(updatedUser);
+        localStorage.setItem("userData", JSON.stringify(updatedUser));
+      } catch (err) {
+        console.error("Failed to fetch role from /identity", err);
+      }
+    };
+
+    fetchRole();
+  }, [user]);
+
   const login = (data) => {
     localStorage.setItem("userData", JSON.stringify(data));
     setUser(data);

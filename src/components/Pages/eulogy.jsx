@@ -5,10 +5,8 @@ import html2pdf from "html2pdf.js";
 import { useEffect } from "react";
 import { useAuth } from "../Context/authhandler";
 
-
 export function Eulogy() {
   const { isLoggedIn, user, logout, authChecked } = useAuth();
-
 
   const [eulogy, setEulogy] = useState("");
   const [editedEulogy, setEditedEulogy] = useState("");
@@ -31,13 +29,11 @@ export function Eulogy() {
     tone: "",
   });
 
-
   useEffect(() => {
     if (!isLoggedIn && authChecked) {
       window.location.href = "/login";
     }
   }, [isLoggedIn]);
-
 
   //found on stackoverflow, edited slightly
   const saveToPDF = () => {
@@ -46,7 +42,6 @@ export function Eulogy() {
       if (!element) {
         throw new Error("Element to save not found");
       }
-
 
       const clonedElement = element.cloneNode(true);
       const closeBtn = clonedElement.querySelector("button.absolute");
@@ -57,7 +52,6 @@ export function Eulogy() {
       wrapper.style.margin = "0";
       wrapper.style.padding = "0";
 
-
       clonedElement.style.height = "auto";
       clonedElement.style.maxHeight = "none";
       clonedElement.style.overflow = "visible";
@@ -65,7 +59,6 @@ export function Eulogy() {
       clonedElement.style.padding = "20mm";
       clonedElement.style.boxSizing = "border-box";
       clonedElement.style.backgroundColor = "white";
-
 
       const contentDiv = clonedElement.querySelector(".lg\\:px-64");
       if (contentDiv) {
@@ -75,7 +68,6 @@ export function Eulogy() {
         contentDiv.style.padding = "0";
         contentDiv.classList.remove("lg:px-64");
       }
-
 
       const opt = {
         margin: 0,
@@ -108,10 +100,8 @@ export function Eulogy() {
         },
       };
 
-
       wrapper.style.borderRadius = "0";
       document.body.appendChild(wrapper);
-
 
       html2pdf()
         .from(clonedElement)
@@ -131,11 +121,9 @@ export function Eulogy() {
     }
   };
 
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
 
   const validateForm = () => {
     if (!formData.first_name.trim() || !formData.last_name.trim()) {
@@ -143,37 +131,30 @@ export function Eulogy() {
       return false;
     }
 
-
     if (!formData.birth_date || !formData.death_date) {
       setError("Both birth date and death date are required");
       return false;
     }
-
 
     if (new Date(formData.death_date) < new Date(formData.birth_date)) {
       setError("Death date must be after birth date");
       return false;
     }
 
-
     return true;
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-
 
     if (!validateForm()) {
       setTimeout(() => setError(null), 5000);
       return;
     }
 
-
     const fullName =
       `${formData.first_name} ${formData.middle_name} ${formData.last_name}`.trim();
-
 
     const payload = {
       name: fullName,
@@ -188,15 +169,12 @@ export function Eulogy() {
       tone: formData.tone,
     };
 
-
     try {
       setLoading(true);
-
 
       const timeoutPromise = new Promise((_, reject) =>
         setTimeout(() => reject(new Error("Request timeout")), 10000)
       );
-
 
       const response = await Promise.race([
         axios.post("http://localhost:8080/api/generateEulogy", payload, {
@@ -206,11 +184,9 @@ export function Eulogy() {
         timeoutPromise,
       ]);
 
-
       if (!response.data) {
         throw new Error("Empty response from server");
       }
-
 
       setEulogy(response.data);
       setEditedEulogy(response.data);
@@ -227,14 +203,12 @@ export function Eulogy() {
         }
       }
 
-
       setError(errorMessage);
       setTimeout(() => setError(null), 5000);
     } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <>
@@ -255,7 +229,6 @@ export function Eulogy() {
             </div>
           </div>
         )}
-
 
         {modalOpen && (
           <div
@@ -501,7 +474,7 @@ export function Eulogy() {
       ::-webkit-scrollbar-thumb:hover {
         background: #444;
       }
-     
+      
       @media print {
         body * {
           visibility: hidden;

@@ -13,6 +13,7 @@ import { Packages } from "./components/Pages/packages";
 import { PackageDetails } from "./components/Pages/package-details";
 import { Admin } from "./components/Pages/admin";
 import { Tour } from "./components/ThreeJS/tour";
+import { Contact } from "./components/Pages/contact";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/" element={<Tour />} />
         <Route path="/auth" element={<OAuthSuccess />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );
