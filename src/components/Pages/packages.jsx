@@ -5,13 +5,20 @@ import { PackageDetails } from "./package-details";
 import { useAuth } from "../Context/authhandler";
 
 export function Packages() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user, logout, authChecked } = useAuth();
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCustomModalOpen, setIsCustomModalOpen] = useState(false);
+
+  useEffect(() => {
+    console.log("Running", isLoggedIn, authChecked);
+    if (!isLoggedIn && authChecked) {
+      window.location.href = "/login";
+    }
+  }, [isLoggedIn, authChecked]);
 
   const [customPackage, setCustomPackage] = useState({
     base_price: 0,

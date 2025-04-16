@@ -4,7 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { OrbitControls, Html } from "@react-three/drei";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
-import { useAuth } from "../Context/authhandler";
+import { useAuth, user, authChecked } from "../Context/authhandler";
 import { Nav } from "../Widgets/nav";
 import { color } from "three/tsl";
 
@@ -190,6 +190,7 @@ function CameraHandler({ onSceneClick }) {
 
 export function Tour() {
   const { isLoggedIn, authChecked, user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
   const [scenes, setScenes] = useState([]);
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [placementMode, setPlacementMode] = useState(false);
@@ -203,6 +204,34 @@ export function Tour() {
   const [importText, setImportText] = useState("");
   const [panoramas, setPanoramas] = useState([]);
   const [controlsExpanded, setControlsExpanded] = useState(false);
+
+  useEffect(() => {
+    if (!isLoggedIn && authChecked) {
+      window.location.href = "/login";
+    }
+  }, [isLoggedIn, authChecked]);
+
+  useEffect(() => {
+    const verifyIdentity = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/identity", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        if (data.role < 2) {
+          setIsAdmin(true);
+        }
+      } catch (error) {
+        console.error("Verification failed:", error);
+      }
+    };
+
+    verifyIdentity();
+  }, []);
 
   useEffect(() => {
     console.log(user);
@@ -397,8 +426,8 @@ export function Tour() {
         />
         <Highlights highlights={currentScene.highlights} />
       </Canvas>
-      {user?.role == 1 ||
-        (user?.role == 0 && (
+      {user?.role == 0 ||
+        (user?.role == 1 && (
           <div className="absolute bottom-5 left-[90%] transform -translate-x-1/2">
             {!controlsExpanded ? (
               <button

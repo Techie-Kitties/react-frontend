@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Nav } from "../Widgets/nav";
+import { useAuth } from "../Context/authhandler";
+import axios from "axios";
 
 export function Admin() {
   const [packages, setPackages] = useState([]);
+  const { isLoggedIn, authChecked } = useAuth();
   const [loading, setLoading] = useState(true);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [removeModalOpen, setRemoveModalOpen] = useState(false);
@@ -33,6 +36,12 @@ export function Admin() {
     permanent_casket_price: 0,
   });
 
+  useEffect(() => {
+    if (!isLoggedIn && authChecked) {
+      window.location.href = "/login";
+    }
+  }, [isLoggedIn, authChecked]);
+
   const closeAddImageModal = () => {
     setAddImageModalOpen(false);
   };
@@ -59,38 +68,56 @@ export function Admin() {
   };
 
   useEffect(() => {
-    const verifyIdentity = async () => {};
-
-    const fetchPackages = async () => {
+    const verifyIdentity = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/packages");
-        if (!response.ok) {
-          throw new Error("Failed to fetch packages");
-        }
-        const data = await response.json();
-        setPackages(data);
-      } catch (err) {
-        console.error("Error fetching packages:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+        const response = await axios.get("http://localhost:8080/identity", {
+          withCredentials: true,
+        });
+        const data = response.data;
+        console.log(data);
 
-    const fetchCustomPrices = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8080/api/getCustomPrices"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch custom prices");
+        if (!data || data.role >= 2) {
+          console.error("user not admin, redirecting.");
+          window.location.href = "/";
         }
-        const data = await response.json();
-        setCustomPrices(data.package);
       } catch (error) {
-        console.error("Error fetching custom prices:", error);
+        console.error("Verification failed:", error);
+        window.location.href = "/";
       }
     };
 
+    verifyIdentity();
+  }, []);
+
+  const fetchPackages = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/packages");
+      if (!response.ok) {
+        throw new Error("Failed to fetch packages");
+      }
+      const data = await response.json();
+      setPackages(data);
+    } catch (err) {
+      console.error("Error fetching packages:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchCustomPrices = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/getCustomPrices");
+      if (!response.ok) {
+        throw new Error("Failed to fetch custom prices");
+      }
+      const data = await response.json();
+      setCustomPrices(data.package);
+    } catch (error) {
+      console.error("Error fetching custom prices:", error);
+    }
+  };
+
+  useEffect(() => {
     const fetchPanoramas = async () => {
       try {
         const response = await fetch("http://localhost:8080/api/getImages");

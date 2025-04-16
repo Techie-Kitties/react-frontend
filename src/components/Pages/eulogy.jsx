@@ -33,7 +33,7 @@ export function Eulogy() {
     if (!isLoggedIn && authChecked) {
       window.location.href = "/login";
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, authChecked]);
 
   //found on stackoverflow, edited slightly
   const saveToPDF = () => {
