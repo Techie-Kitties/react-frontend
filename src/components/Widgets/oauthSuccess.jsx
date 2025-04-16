@@ -12,21 +12,19 @@ export function OAuthSuccess() {
       return acc;
     }, {});
 
-    if (cookies.id) {
-      console.log(cookies.id);
+    if (cookies.username || cookies.name) {
       const userData = {
-        id: cookies.id,
         email: cookies.email,
-        name: cookies.name,
+        name: cookies.name || cookies.username,
         username: cookies.username,
         picture: cookies.picture,
       };
 
       login(userData);
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 50);
     }
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 50);
   }, []);
 
   return (
