@@ -5,15 +5,11 @@ export function Nav() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { isLoggedIn, user, logout } = useAuth();
 
-
-  const isAdmin = user?.role === 0 || user?.role === 1;
-
-
   const handleLogout = () => {
+    console.log(user);
     logout();
     setDropdownOpen(false);
   };
-
 
   return (
     <div className="nav absolute top-0 left-0 w-full z-50 text-white">
@@ -26,7 +22,6 @@ export function Nav() {
           <div className="my-auto pl-8">Eternal Echoes</div>
         </a>
 
-
         <div className="hidden md:flex md:space-x-16 text-lg font-semibold">
           <a href="/" className="hover:text-gray-300">
             Home
@@ -38,13 +33,12 @@ export function Nav() {
             Contact
           </a>
 
-
-          {isAdmin && (
-            <a href="/admin" className="hover:text-gray-300">
-              Admin
-            </a>
-          )}
-
+          {user?.role == 1 ||
+            (user?.role == 0 && (
+              <a href="/admin" className="hover:text-gray-300">
+                Admin
+              </a>
+            ))}
 
           {isLoggedIn ? (
             <div className="relative">
@@ -64,7 +58,6 @@ export function Nav() {
                 )}
                 <span>{user?.name || user?.username || "User"}</span>
               </div>
-
 
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 bg-[#2F4754] text-white rounded-md shadow-lg w-48">
@@ -87,7 +80,6 @@ export function Nav() {
             </a>
           )}
         </div>
-
 
         <button
           className="md:hidden focus:outline-none"
@@ -127,10 +119,9 @@ export function Nav() {
         </button>
       </div>
 
-
       <div
-        className={`absolute top-[64px] left-0 w-full bg-[#2F4754] text-lg font-semibold
-          transform transition-all duration-300 ease-in-out origin-top
+        className={`absolute top-[64px] left-0 w-full bg-[#2F4754] text-lg font-semibold 
+          transform transition-all duration-300 ease-in-out origin-top 
           ${
             isOpen
               ? "opacity-100 scale-y-100"
@@ -160,17 +151,16 @@ export function Nav() {
             Contact
           </a>
 
-
-          {isAdmin && (
-            <a
-              href="/admin"
-              className="hover:text-gray-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Admin
-            </a>
-          )}
-
+          {user?.role == 1 ||
+            (user?.role == 3 && (
+              <a
+                href="/admin"
+                className="hover:text-gray-300"
+                onClick={() => setIsOpen(false)}
+              >
+                Admin
+              </a>
+            ))}
 
           {isLoggedIn ? (
             <div className="relative">
@@ -190,7 +180,6 @@ export function Nav() {
                 )}
                 <span>{user?.name || user?.username || "User"}</span>
               </div>
-
 
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 bg-[#2F4754] text-white rounded-md shadow-lg w-48">
@@ -221,7 +210,3 @@ export function Nav() {
     </div>
   );
 }
-
-
-
-

@@ -3,8 +3,6 @@ import { Footer } from "../Widgets/footer";
 import { Nav } from "../Widgets/nav";
 import { PackageDetails } from "./package-details";
 import { useAuth } from "../Context/authhandler";
-
-
 export function Packages() {
   const { isLoggedIn } = useAuth();
   const [packages, setPackages] = useState([]);
@@ -48,6 +46,7 @@ export function Packages() {
   };
 
 
+
   const handlePurchase = () => {
     if (isLoggedIn) {
       alert("Package successfully purchased"); // mock purchase
@@ -58,12 +57,15 @@ export function Packages() {
   };
 
 
+
   const Modal = ({ isOpen, onClose, package: pkg }) => {
     if (!isOpen || !pkg) return null;
 
 
     return (
+
       <div className="fixed inset-0 bg-gradient-to-b from-slate-800 to-black bg-opacity-50 z-50 flex justify-center items-center p-4">
+
         <div className="bg-white rounded-lg p-6 sm:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
           <button
             onClick={onClose}
@@ -268,6 +270,3 @@ export function Packages() {
     </div>
   );
 }
-
-
-

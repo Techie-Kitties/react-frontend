@@ -2,15 +2,12 @@ import { useEffect } from "react";
 import { Nav } from "../Widgets/nav";
 import { useAuth } from "../Context/authhandler";
 
-
 export function Home() {
   const { isLoggedIn } = useAuth();
-
 
   const packagesLink = isLoggedIn ? "/packages" : "/login";
   const tourLink = isLoggedIn ? "/tour" : "/login";
   const eulogyLink = isLoggedIn ? "/eulogy" : "/login";
-
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -79,8 +76,3 @@ export function Home() {
     </div>
   );
 }
-
-
-
-
-
