@@ -45,8 +45,8 @@ export function Packages() {
     selectedItems: {
       cemetery_plot_price: false,
       grave_marker_price: false,
-      body_preparation_price: false,
-      funeral_transport_price: false,
+      body_preparation_price: true, // always
+      funeral_transport_price: true, // always
       family_transport_price: false,
       prayer_room_price: false,
       custom_programs_price: false,
@@ -56,7 +56,7 @@ export function Packages() {
       custom_floral_sprays_price: false,
       additional_flower_arrangements_price: false,
       professional_officiant_price: false,
-      casket_price: false,
+      casket_price: true, // Always selected
       permanent_casket_price: false,
     },
     quantities: {
@@ -172,6 +172,16 @@ export function Packages() {
   };
 
   const toggleSelection = (key) => {
+    if (
+      [
+        "body_preparation_price",
+        "funeral_transport_price",
+        "casket_price",
+      ].includes(key)
+    ) {
+      return;
+    }
+
     setSelections((prev) => ({
       ...prev,
       selectedItems: {
@@ -352,20 +362,73 @@ export function Packages() {
             className="grid grid-cols-1 sm:grid-cols-2 gap-2 accent-amber-600"
             onSubmit={handleCustomPackageSubmit}
           >
-            {Object.keys(selections.selectedItems).map((key) => (
-              <div key={key} className="flex items-center ">
-                <input
-                  type="checkbox"
-                  id={key}
-                  checked={selections.selectedItems[key]}
-                  onChange={() => toggleSelection(key)}
-                  className="mr-3 h-4 w-4"
-                />
-                <label htmlFor={key} className="text-black">
-                  {itemNames[key]} (${customPackage[key]})
-                </label>
-              </div>
-            ))}
+            {/* Required items - not toggleable */}
+            <div className="flex items-center opacity-70">
+              <input
+                type="checkbox"
+                id="body_preparation_price"
+                checked={true}
+                disabled={true}
+                className="mr-3 h-4 w-4"
+              />
+              <label htmlFor="body_preparation_price" className="text-black">
+                {itemNames.body_preparation_price} ($
+                {customPackage.body_preparation_price}) - Required
+              </label>
+            </div>
+            <div className="flex items-center opacity-70">
+              <input
+                type="checkbox"
+                id="funeral_transport_price"
+                checked={true}
+                disabled={true}
+                className="mr-3 h-4 w-4"
+              />
+              <label htmlFor="funeral_transport_price" className="text-black">
+                {itemNames.funeral_transport_price} ($
+                {customPackage.funeral_transport_price}) - Required
+              </label>
+            </div>
+            <div className="flex items-center opacity-70">
+              <input
+                type="checkbox"
+                id="casket_price"
+                checked={true}
+                disabled={true}
+                className="mr-3 h-4 w-4"
+              />
+              <label htmlFor="casket_price" className="text-black">
+                {itemNames.casket_price} (${customPackage.casket_price}) -
+                Required
+              </label>
+            </div>
+
+            {Object.keys(selections.selectedItems).map((key) => {
+              if (
+                [
+                  "body_preparation_price",
+                  "funeral_transport_price",
+                  "casket_price",
+                ].includes(key)
+              ) {
+                return null;
+              }
+
+              return (
+                <div key={key} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={key}
+                    checked={selections.selectedItems[key]}
+                    onChange={() => toggleSelection(key)}
+                    className="mr-3 h-4 w-4"
+                  />
+                  <label htmlFor={key} className="text-black">
+                    {itemNames[key]} (${customPackage[key]})
+                  </label>
+                </div>
+              );
+            })}
             <br></br>
             <div className="flex flex-col pt-6 space-y-2 justify-evenly">
               <div className="flex items-center">

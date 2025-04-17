@@ -248,6 +248,7 @@ export function Tour() {
                   ? JSON.parse(arrow.position.replace(/\\/g, ""))
                   : arrow.position,
             })),
+
             highlights: scene.highlights.map((highlight) => ({
               ...highlight,
               position:
@@ -306,7 +307,6 @@ export function Tour() {
     },
     [placementMode, highlightMode]
   );
-
   const saveScene = React.useCallback((sceneData) => {
     console.log("Sending scene data:", sceneData);
     fetch("http://localhost:8080/api/saveScene", {
@@ -314,7 +314,7 @@ export function Tour() {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "includde",
+      credentials: "include",
       body: JSON.stringify(sceneData),
     })
       .then((res) => res.json())
@@ -342,10 +342,12 @@ export function Tour() {
       ...updatedScenes[currentSceneIndex],
       arrows: newArrows,
     };
+
     setScenes(updatedScenes);
     setShowModal(false);
+
     saveScene({
-      currentPanorama: currentSceneIndex,
+      currentPanorama: updatedScenes[currentSceneIndex].currentPanorama,
       arrows: newArrows,
       highlights: updatedScenes[currentSceneIndex].highlights,
     });
@@ -379,7 +381,7 @@ export function Tour() {
     setShowHighlightModal(false);
     setHighlightLabel("");
     saveScene({
-      currentPanorama: currentSceneIndex,
+      currentPanorama: updatedScenes[currentSceneIndex].currentPanorama,
       arrows: updatedScenes[currentSceneIndex].arrows,
       highlights: newHighlights,
     });
@@ -427,7 +429,7 @@ export function Tour() {
         <Highlights highlights={currentScene.highlights} />
       </Canvas>
       {user?.role == 0 ||
-        (user?.role == 1 && (
+        (user?.role == 3 && (
           <div className="absolute bottom-5 left-[90%] transform -translate-x-1/2">
             {!controlsExpanded ? (
               <button
@@ -493,6 +495,7 @@ export function Tour() {
                     src={"http://localhost:8080/" + key.currentPanorama}
                     alt={`Panorama ${index + 1}`}
                     className="w-full h-48 object-cover rounded mb-2"
+                    loading="lazy"
                   />
                   <span className="block text-center font-medium">
                     Panorama {index + 1}
